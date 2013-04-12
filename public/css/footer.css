@@ -1,0 +1,40 @@
+/* 
+    Document   : footer
+    Created on : 12-abr-2013, 11:44:16
+    Author     : xavier.antolin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+footer{
+    background: lightgray;
+    height: 350px;
+    width:100%;
+    padding-left:25%; 
+}
+
+footer #left{
+    float:left;
+    width:150px;
+}
+
+footer #center{
+    float:left;
+    width:150px;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+footer #right{
+    float:left;
+    width:300px;
+}
+
+footer h1{
+    text-transform:uppercase;
+}
+
+footer ul{
+    margin-left:-37px;
+    list-style: none;
+}
