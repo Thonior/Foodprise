@@ -1,3 +1,4 @@
+</div>
 <footer>
     <div id="left">
         <h1>Search</h1>

@@ -13,7 +13,6 @@ include('MY_Controller.php');
 class IndexController extends MY_Controller{
     
     public function index(){
-        
         $this->_load('index/index');
     }
     

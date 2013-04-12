@@ -6,7 +6,9 @@
         Purpose of the stylesheet follows.
 */
 
-root { 
-    display: block;
+header{
+    height:40px;
+    background: black;
+    width: 100%;
 }
 

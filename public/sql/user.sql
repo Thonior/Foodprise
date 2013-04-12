@@ -1,0 +1,15 @@
+CREATE  TABLE `foodprise`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(100) NOT NULL ,
+  `lastname` VARCHAR(100) NOT NULL ,
+  `created` INT NOT NULL ,
+  `email` VARCHAR(100) NOT NULL ,
+  `password` VARCHAR(100) NOT NULL ,
+  `role` VARCHAR(45) NOT NULL DEFAULT 'ROLE_USER' ,
+  `twitter` VARCHAR(45) NULL ,
+  `city` VARCHAR(100) NULL ,
+  `language` VARCHAR(45) NULL ,
+  `age` VARCHAR(45) NULL ,
+  `genre` VARCHAR(45) NULL ,
+  `bio` VARCHAR(1000) NULL ,
+  PRIMARY KEY (`id`) );
