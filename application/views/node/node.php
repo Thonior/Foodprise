@@ -1,0 +1,1 @@
+<img src="<?=base_url()?>/public/img/foodprise/<?=$node['img']?>"/>

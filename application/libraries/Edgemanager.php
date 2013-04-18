@@ -16,42 +16,17 @@ class Edgemanager {
         $CI->load->model('edge');
     }
     
-    public function like($user,$node){
-        $this->loadModel('edge');
-    }
-    
-    public function unlike($user,$node){
-        $this->loadModel('edge');
-    }
-    
-    public function follow($user,$node){
-        $this->loadModel('edge');
-    }
-    
-    public function unfollow($user,$node){
-        $this->loadModel('edge');
-    }
-    
-    public function comment($user,$node){
-        $this->loadModel('edge');
-    }
-        
-    public function uncomment($user,$node){
-        $this->loadModel('edge');
-    }
-    
-    
-    public function addEdge($idea,$origin,$context,$comment='',$date=0){
+    public function addEdge($node,$origin,$context,$comment='',$date=0){
         $CI =& get_instance();
         $CI->load->model('edge');
-        $CI->load->model('idea');
-        $destowner = $CI->idea->load($idea);
-        $destowner = $destowner['id_user'];
+        $CI->load->model('node');
+        $destowner = $CI->node->load($node);
+        $destowner = $destowner['user_id'];
         if(!$date)
             $date=time();
         $data = array(
             'comment'=>$comment,
-            'destination'=>$idea,
+            'destination'=>$node,
             'origin'=>$origin,
             'context'=>$context,
             'date'=>$date,

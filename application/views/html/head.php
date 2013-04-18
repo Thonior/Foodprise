@@ -7,7 +7,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/home.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/footer.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/header.css" media="screen" />
-        <script src="<?php echo base_url();?>public/js/jquery-1.9.1,min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/public/css/jquery.tagsinput.css" media="screen" />
+        <script src="<?php echo base_url();?>public/js/jquery-1.9.1.min.js"></script>
+        <script src="<?php echo base_url();?>public/js/jquery.tagsinput.js"></script>
         <script src="<?php echo base_url();?>public/js/cookies.js"></script>
        	<!--[if lt IE 9]>
        		<script src="dist/html5shiv.js"></script>

@@ -14,7 +14,8 @@ class MY_Controller extends CI_Controller {
      * @param boolean $user User is logged
      * @param array $params parameters to pass to the view
      */
-    protected function _load($view, $title = 'Fodprise', $user = false, $params=array()){
+    protected function _load($view, $title = 'Fodprise', $params=array()){
+        $user = $this->getUser();
     	$this->load->view('html/head',array('title' =>$title));
         $this->load->view('html/header',array('user' =>$user));
         $this->load->view($view, $params);

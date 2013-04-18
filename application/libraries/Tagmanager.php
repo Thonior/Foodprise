@@ -44,19 +44,19 @@ class Tagmanager {
         return $tags;
     }
     
-//    public function tagIdea($idea,$tags){
-//        $CI =& get_instance();
-//        $CI->load->model('tag');
-//        foreach($tags as $tag){
-//            $CI->tag->tagIdea($idea,$tag);
-//        }
-//    }
-//    
-//    public function getTags($idea){
-//        $CI =& get_instance();
-//        $CI->load->model('tag');
-//        return $CI->tag->getTagByIdea($idea);
-//    }
+    public function tagNode($node,$tags){
+        $CI =& get_instance();
+        $CI->load->model('tag');
+        foreach($tags as $tag){
+            $CI->tag->tagNode($node,$tag);
+        }
+    }
+    
+    public function getTags($node){
+        $CI =& get_instance();
+        $CI->load->model('tag');
+        return $CI->tag->getTagByNode($node);
+    }
     
     
     

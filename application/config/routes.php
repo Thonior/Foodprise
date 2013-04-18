@@ -42,5 +42,12 @@ $route['default_controller'] = "IndexController";
 $route['404_override'] = '';
 
 $route['home'] = "IndexController";
+
+$route['register']= "UserController/register";
+$route['login']= "UserController/login";
+$route['logout']= "UserController/logout";
+
+$route['newfood'] = "NodeController/newNode";
+$route['foodprise/(:num)'] = "NodeController/node/$1";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
