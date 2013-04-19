@@ -24,13 +24,14 @@ class Tagmanager {
         }
         $tag = $CI->tag->loadBy(array('slug'=>$slug));
         if($tag)
-            return $tag['id'];
+            return $tag;
         else{
             $data = array(
                 'tag' => ucfirst ($slug),
                 'slug' => $slug
             );
-            return $CI->tag->insert($data);
+            $id =  $CI->tag->insert($data);
+            return $CI->tag->load($id);
         }
     }
     
@@ -47,8 +48,13 @@ class Tagmanager {
     public function tagNode($node,$tags){
         $CI =& get_instance();
         $CI->load->model('tag');
-        foreach($tags as $tag){
-            $CI->tag->tagNode($node,$tag);
+        if(is_array($tags)){
+            foreach($tags as $tag){
+                $CI->tag->tagNode($node,$tag);
+            }
+        }
+        else{
+            $CI->tag->tagNode($node,$tags);
         }
     }
     
@@ -58,7 +64,23 @@ class Tagmanager {
         return $CI->tag->getTagByNode($node);
     }
     
+    public function getCategory($node){
+        $CI =& get_instance();
+        $CI->load->model('tag');
+        return $CI->tag->getCategory($node);
+    }
     
+    public function getCategories(){
+        $CI =& get_instance();
+        $CI->load->model('tag');
+        return $CI->tag->loadBy(array('category'=>1));
+    }
+    
+    public function getNodesByCategory($category){
+        $CI =& get_instance();
+        $CI->load->model('tag');
+        return $CI->tag->getNodesByCategory($category);
+    }
     
 }
 

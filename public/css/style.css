@@ -17,5 +17,6 @@ h1{
 }
 
 #wrapper{
-    height: 700px;
+    height: auto;
+    min-height: 700px;
 }

@@ -8,8 +8,42 @@
 
 header{
     height:40px;
-    background: black;
+    background: grey;
     width: 100%;
     color: white;
 }
 
+header a{
+    text-decoration: none;
+    color: white;
+}
+
+header ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+
+header li{
+    display: inline;
+    cursor:pointer;
+}
+
+header .search{
+    float:right;
+}
+
+header .menu{
+    float:left;
+}
+
+#dropdown{
+    width: 250px;
+    display:none;
+}
+
+#dropdown ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}

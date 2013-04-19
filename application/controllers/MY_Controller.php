@@ -16,8 +16,17 @@ class MY_Controller extends CI_Controller {
      */
     protected function _load($view, $title = 'Fodprise', $params=array()){
         $user = $this->getUser();
+        //prepare header
+        $categories = $this->tagmanager->getCategories();
+        $header = array(
+            'categories' => $categories,
+            'user' => $user,
+        );
+        
+        
+        
     	$this->load->view('html/head',array('title' =>$title));
-        $this->load->view('html/header',array('user' =>$user));
+        $this->load->view('html/header',$header);
         $this->load->view($view, $params);
         $this->load->view('html/footer');
     }

@@ -17,38 +17,55 @@ class NodeController extends MY_Controller{
         $this->load->model('node');
         $node = $this->node->load($id);
         $user = $this->getUser();
+        $tags = $this->tagmanager->getTags($node['id']);
+        $category = $this->tagmanager->getCategory($node['id']);
         $data = array(
             'node'=>$node,
             'user'=>$user,
+            'tags'=>$tags,
+            'category'=>$category,
         );
         $this->_load('node/node',$node['title'],$data);
     }
     
     public function newNode(){
         $user = $this->getUser(true);
-        $this->_load('node/newNode','Create a Foodprise!');
+        $categories = $this->tagmanager->getCategories();
+        $data = array(
+            'categories'=>$categories
+        );
+        $this->_load('node/newNode','Create a Foodprise!',$data);
     }
     
     public function checkNode(){
-        
-        $tags=$this->tagmanager->addTags($this->input->post('tags'));
+        if($this->input->post('tags')){
+            $tags=$this->tagmanager->addTags($this->input->post('tags'));
+        }
         $this->form_validation->set_rules('title', 'Title', 'trim|required|max_lenght[100]');
         $this->form_validation->set_rules('description', 'Description', 'trim|required|max_lenght[500]');
+        $this->form_validation->set_rules('category', 'Category', 'required');
         if ($this->form_validation->run() == FALSE)
         {
             $this->_load('user/newNode','Create a Foodprise!');
         }
         else
-        {
+        {   
+            $user = $this->GetUser();
             $image = $this->uploadImg();
             $this->load->model('node');
             $newNode = array(
                 'title'=>$this->input->post('title'),
-                'description'=>$this->input->post('description'),
-                'img'=>$image['file_name'],
+                'description'=>nl2br($this->input->post('description')),
+                'original'=>$image['file_name'],
+                'thumb'=>'thumb_'.$image['file_name'],
+                'user_id'=>$user['id'],
+                'created'=>time(),
+                'large'=>$image['file_name'],
             );
             $id = $this->node->insert($newNode);
-            $this->tagmanager->tagNode($id,$tags);
+            $this->tagmanager->tagNode($id,$this->input->post('category'));
+            if($this->input->post('tags'))
+                $this->tagmanager->tagNode($id,$tags);
             redirect('foodprise/'.$id,'refresh');
         }
     }
@@ -69,8 +86,30 @@ class NodeController extends MY_Controller{
 		}
 		else
 		{
-                        return $this->upload->data();
+                    $result = $this->upload->data();
+                    $this->createThumnail($result);
+                    $this->createLarge($result);
+                    
+                    return $result;
 		}
+    }
+    
+    private function createThumnail($image){
+        $config['source_image'] = '/public/img/foodprise/thumb/'.$image['file_name'];
+        $config['create_thumb'] = TRUE;
+        $config['width']	 = 75;
+        $config['height'] = 50;
+        $this->load->library('image_lib',$config);
+        $this->image_lib->resize();
+    }
+    
+    private function createLarge($image){
+        $config['source_image'] = '/public/img/foodprise/large/'.$image['file_name'];
+        $config['new_image'] = TRUE;
+        $config['width']	 = 700;
+        $config['height'] = 600;
+        $this->load->library('image_lib',$config);
+        $this->image_lib->resize();
     }
     
     public function editNode($id){
@@ -102,6 +141,20 @@ class NodeController extends MY_Controller{
         {
             $this->edgemanager->addEdge($id,$user['id'],'comment',$this->input->post('comment'));
         }
+    }
+    
+    public function search($tags){
+        $nodes = $this->tagmanager->getNodes($tags,true);
+    }
+    
+    public function nodeByCategory($category){
+        $this->load->model('tag');
+        $category = $this->tag->loadBy(array('tag'=>$category));
+        $nodes = $this->tagmanager->getNodesByCategory($category['id']);
+        $data = array(
+            'nodes'=>$nodes,
+        );
+        $this->_load('node/nodes',$category['tag'], $data);
     }
     
 }

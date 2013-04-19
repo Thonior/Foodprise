@@ -49,5 +49,7 @@ $route['logout']= "UserController/logout";
 
 $route['newfood'] = "NodeController/newNode";
 $route['foodprise/(:num)'] = "NodeController/node/$1";
+
+$route['category/(:any)'] = "NodeController/nodeByCategory/$1";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

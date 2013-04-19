@@ -15,6 +15,7 @@
 |
 */
 $config['base_url']	= 'http://localhost/Foodprise';
+//$config['base_url']	= 'http://foodprise.hl158.dinaserver.com';
 
 /*
 |--------------------------------------------------------------------------
