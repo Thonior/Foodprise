@@ -13,8 +13,11 @@ include('MY_Controller.php');
 class IndexController extends MY_Controller{
     
     public function index(){
-        
-        $this->_load('index/index');
+        $data = array(
+            'page'=>0,
+            'category'=>0,
+        );
+        $this->_load('node/nodes','Foodprise',$data);
     }
     
     //put your code here

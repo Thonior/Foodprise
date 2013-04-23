@@ -10,6 +10,7 @@ body{
     margin: 0;
     padding: 0;
     font-family:'Century Schoolbook';
+    background-color:#e2e8ec;
 }
 
 h1{
@@ -19,4 +20,9 @@ h1{
 #wrapper{
     height: auto;
     min-height: 700px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
 }

@@ -7,10 +7,8 @@
 */
 
 header{
-    height:40px;
-    background: grey;
-    width: 100%;
-    color: white;
+    /*margin-top: 150px;*/
+    
 }
 
 header a{
@@ -29,21 +27,67 @@ header li{
     cursor:pointer;
 }
 
+.option{
+    width: 150px;
+    height: 75px;    
+    /*padding-top: 20px;*/
+    text-align: center;
+    float:left;
+}
+
+.option:hover{
+    width: 150px;
+    text-align: center;
+    /*height: 75px;*/ 
+    background-color: #e0b610;
+}
+
 header .search{
-    float:right;
 }
 
 header .menu{
     float:left;
+    background: #9e9d9d;
+    width: 100%;
+    color: white;
+    height: 75px;
+    font-size: 20px;
+}
+
+#menu{
+    width: 1200px;
+    margin-left: 14%;
+    margin-right: auto;
 }
 
 #dropdown{
-    width: 250px;
+    width: 440px;
+    height: 585px;
     display:none;
+    background:-webkit-gradient(linear, left top, left bottom, from(#4e4d50), to(#b3b3b3));
+    background:-moz-linear-gradient(center top , #4e4d50, #b3b3b3) repeat scroll 0 0 #b3b3b3;
+    position:absolute;
+    left:250px;
+    top:232px;
+    z-index: 9999;
 }
 
 #dropdown ul{
     list-style-type:none;
     margin:0;
     padding:0;
+}
+
+#dropdown .option{
+    width: 150px;
+    height: 55px;    
+    /*padding-top: 20px;*/
+    text-align: center;
+    float:left;
+}
+
+#logo{
+    width:1600px;
+    margin-left: auto;
+    margin-right: auto;
 }

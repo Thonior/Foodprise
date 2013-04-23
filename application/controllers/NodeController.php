@@ -74,9 +74,9 @@ class NodeController extends MY_Controller{
                 $user = $this->getUser(true);
 		$config['upload_path'] = './public/img/foodprise';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1024';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		$config['max_size']	= '1024000';
+		$config['max_width']  = '2024';
+		$config['max_height']  = '2024';
 
 		$this->load->library('upload', $config);
 
@@ -150,11 +150,27 @@ class NodeController extends MY_Controller{
     public function nodeByCategory($category){
         $this->load->model('tag');
         $category = $this->tag->loadBy(array('tag'=>$category));
-        $nodes = $this->tagmanager->getNodesByCategory($category['id']);
+        $data = array(
+            'page'=>0,
+            'category'=>$category['id'],
+        );
+        $this->_load('node/nodes',$category['tag'],$data);
+    }
+    
+    public function pullNodes($page=0,$category=0){
+        if($category){
+            $nodes = $this->tagmanager->getNodesByCategory($category);
+        }
+        else{
+            $this->load->model('node');
+            $nodes = $this->node->loadN($page);
+        }
         $data = array(
             'nodes'=>$nodes,
+            'page'=>$page,
+            'category'=>$category,
         );
-        $this->_load('node/nodes',$category['tag'], $data);
+        $this->load->view('node/list',$data);
     }
     
 }

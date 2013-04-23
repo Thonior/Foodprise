@@ -1,0 +1,13 @@
+/* 
+    Document   : node
+    Created on : 22-abr-2013, 19:53:30
+    Author     : Julio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#node-list{
+    width:600px;
+    margin-left: auto;
+    margin-right: auto;
+}

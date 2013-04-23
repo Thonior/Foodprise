@@ -1,18 +1,13 @@
 <div id="node-list">
-    <?php foreach($nodes as $node):?>
-        <div class="node-container">
-            <h2>
-                <?=$node['title']?>
-            </h2>
-            <img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
-            <span>
-                <?=$node['description']?>
-            </span>
-            <span>
-                <?=$node['username']?>
-            </span>
-        </div>
     
-    <?php endforeach;?>
     
 </div>
+<div id="filter-info" data-page="<?=$page?>" data-category="<?=$category?>"/>
+
+<script>
+$(document).ready(function(){
+    var category = $('#filter-info').data('category');
+    var page = $('#filter-info').data('page');
+    $('#node-list').load('<?=  site_url('NodeController/pullNodes')?>/'+page+'/'+category);
+});    
+</script>

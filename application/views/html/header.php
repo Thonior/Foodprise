@@ -1,35 +1,42 @@
 <body>
-    
 <header>
+    <div id="logo">
+        <img src="<?php echo base_url();?>public/img/logo.png"/>
+        <img src="<?php echo base_url();?>public/img/banner.png"/>
+    </div>
     <div class="menu">
+        <div id="menu">
         <ul>
-            <li><a href="<?=site_url('home')?>">Home</a></li>
-            <li id="root">Categories</li>
-            <li>Boxes</li>
-            <li><a href="<?=site_url('newfood')?>">Add</a></li>
-            <li>Invite</li>
+            <li><div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('home')?>">Home</a></div></div></li>
+            <li id="root"><div class="option"><div style="padding-top: 20px;">Categories</div></div></li>
+            <li><div class="option"><div style="padding-top: 20px;">Boxes</div></div></li>
+            <li><div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('newfood')?>">Add</a></div></div></li>
+            <li><div class="option"><div style="padding-top: 20px;">Invite</div></div></li>
             <li>
                 <?php if(!$user):?>
-                    <a href="<?=site_url('login')?>">Log in</a> <a href="<?=site_url('register')?>">Register</a> 
+                    <div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('login')?>">Log in</a></div></div> 
+                    <div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('register')?>">Register</a> </div></div>
                 <?php else:?>
-                    <a href="<?=site_url('logout')?>">Logout</a>
-                <?php endif;?></li>
+                    <div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('logout')?>">Logout</a></div></div>
+                <?php endif;?>
+            </li>
+            <li><div style="padding-top: 20px;width: 150px;height: 75px;float:left;"><input class="search" id="search-header" type="text" name="search" placeholder="Search"/></div></div></li>
         </ul>
+        
+        </div>
     </div>
-    <div class="search"><input id="search-header" type="text" name="search" placeholder="Search"/></div>
+    
     
 </header>
     <div id="dropdown">
         <ul>
             <?php foreach($categories as $category):?>
-                <li><a href="<?=site_url('category')?>/<?=$category['tag']?>"><?=$category['tag']?></a></li>
+                <li><div class="option"><a href="<?=site_url('category')?>/<?=$category['tag']?>"><?=$category['tag']?></a></div></li>
             <?php endforeach;?>
         </ul>
     </div>
 <div id="wrapper">
     
 <script>
-    $('#root').mouseover(function(){
-        $('#dropdown').css('display','block');
-    });
+    
 </script>

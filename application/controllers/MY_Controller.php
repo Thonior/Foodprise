@@ -26,6 +26,7 @@ class MY_Controller extends CI_Controller {
         
         
     	$this->load->view('html/head',array('title' =>$title));
+        $this->load->view('html/js');
         $this->load->view('html/header',$header);
         $this->load->view($view, $params);
         $this->load->view('html/footer');
