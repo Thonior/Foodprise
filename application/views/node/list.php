@@ -3,12 +3,14 @@
             <h2>
                 <?=$node['title']?>
             </h2>
-            <img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
-            <span>
+            <div class="node-image">
+                <img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
+            </div>
+            <div class="node-desc">
                 <?=$node['description']?>
-            </span>
-            <span>
+            </div>
+            <div class="node-more">
                 <?=$node['username']?>
-            </span>
+            </div>
         </div>
 <?php endforeach;?>

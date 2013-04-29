@@ -11,3 +11,21 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.node-container{
+    background-color: white;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    width:auto;
+    height:auto;
+    padding: 10px;
+    margin:10px;
+}
+
+.node-image{
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
