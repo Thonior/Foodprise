@@ -17,7 +17,7 @@ class IndexController extends MY_Controller{
             'page'=>0,
             'category'=>0,
         );
-        $this->_load('node/nodes','Foodprise',$data);
+        $this->_load('index/index','Foodprise',$data);
     }
     
     //put your code here

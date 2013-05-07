@@ -1,42 +1,51 @@
 <body>
-<header>
-    <div id="logo">
-        <img src="<?php echo base_url();?>public/img/logo.png"/>
-        <img src="<?php echo base_url();?>public/img/banner.png"/>
-    </div>
-    <div class="menu">
-        <div id="menu">
-        <ul>
-            <li><div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('home')?>">Home</a></div></div></li>
-            <li id="root"><div class="option"><div style="padding-top: 20px;">Categories</div></div></li>
-            <li><div class="option"><div style="padding-top: 20px;">Boxes</div></div></li>
-            <li><div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('newfood')?>">Add</a></div></div></li>
-            <li><div class="option"><div style="padding-top: 20px;">Invite</div></div></li>
-            <li>
-                <?php if(!$user):?>
-                    <div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('login')?>">Log in</a></div></div> 
-                    <div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('register')?>">Register</a> </div></div>
-                <?php else:?>
-                    <div class="option"><div style="padding-top: 20px;"><a href="<?=site_url('logout')?>">Logout</a></div></div>
-                <?php endif;?>
-            </li>
-            <li><div style="padding-top: 20px;width: 150px;height: 75px;float:left;"><input class="search" id="search-header" type="text" name="search" placeholder="Search"/></div></div></li>
-        </ul>
-        
-        </div>
-    </div>
-    
-    
-</header>
-    <div id="dropdown">
-        <ul>
-            <?php foreach($categories as $category):?>
-                <li><div class="option"><a href="<?=site_url('category')?>/<?=$category['tag']?>"><?=$category['tag']?></a></div></li>
-            <?php endforeach;?>
-        </ul>
-    </div>
-<div id="wrapper">
-    
-<script>
-    
-</script>
+<div id="content">
+	<header>
+	    <div id="food-prise">
+                <a href="<?=site_url('home')?>"><img src="<?php echo base_url();?>public/img/logo.png"/></a>
+	        <a href="<?=site_url('home')?>"><img class="float-right" src="<?php echo base_url();?>public/img/banner.jpg"/></a>
+	    </div>
+	    
+	    <nav>
+	    	<div class="logo floated"></div>
+		        <ul id="menu">
+		            <li><a href="<?=site_url('home')?>">Home</a></li>
+		            <li id="root"><a href="#">Categories</a></li>
+		            <li><a href="<?=site_url('home')?>">Boxes</a></li>
+		            <li class="add"><a href="#">Add</a></li>
+                            <!--<li><span class="add">Add</div></li>-->
+		            <li><a href="<?=site_url('invite')?>">Invite</a></li>
+                            <?php if(!$user):?>
+                            <li>
+                                <a class="double" href="<?=site_url('login')?>">Log in</a>
+                            </li>
+                               <!--<a class="double" href="<?=site_url('register')?>">Register</a>-->
+                            <?php else:?>
+                            <li id="root2">
+                               <a href="<?=site_url('profile')?>">You</a>
+                            </li>
+                            <?php endif;?>
+		            <li class="end">
+		            	<input class="search" id="search-header" type="text" name="search" placeholder="Search now" />
+		            </li>
+		        </ul>
+	    </nav>
+	    <div id="dropdown">
+	        <ul>
+	            <?php foreach($categories as $category):?>
+	                <li><div class="option"><a href="<?=site_url('category')?>/<?=$category['tag']?>"><?=$category['tag']?></a></div></li>
+	            <?php endforeach;?>
+	        </ul>
+	    </div>
+            
+            <div id="dropdown2">
+	        <ul>
+                    <li><div class="option"><a href="<?=site_url('configuration')?>">Configuration</a></div></li>
+                    <li><div class="option"><a href="<?=site_url('logout')?>">Log out</a></div></li>
+	        </ul>
+	    </div>
+	    
+	</header>
+	
+	<div id="wrapper">
+

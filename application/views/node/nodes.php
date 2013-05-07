@@ -1,7 +1,9 @@
-<div id="node-list">
-    
-    
-</div>
+<section>
+    <div id="node-list">
+
+
+    </div>
+</section>
 <div id="filter-info" data-page="<?=$page?>" data-category="<?=$category?>"/>
 
 <script>

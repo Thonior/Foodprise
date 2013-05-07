@@ -36,19 +36,18 @@ class tag extends MY_Model {
     }
     
     function getNodes($tags){
-        $query = "SELECT node.*,user.username,user.id as user_id
-            FROM node LEFT JOIN tag_node ON node.id=tag_node.id_node
-            node LEFT JOIN user ON node.user_id=user.id
-            tag LEFT JOIN tag_node ON tag.id=tag_node.id_tag
-            WHERE";
+        $query = "SELECT n.* FROM tag_node ti 
+            LEFT JOIN tag t ON ti.id_tag=t.id 
+            LEFT JOIN node n ON ti.id_node=n.id WHERE";
         $i=0;
         foreach($tags as $tag){
             if($i==0)
-                $query.=" tag.slug LIKE %".$tag['slug']."%";
+                $query.=" t.slug LIKE '%".$tag['slug']."%'";
             else
-                $query.=" OR tag.slug LIKE %".$tag['id']."%";
+                $query.=" OR t.slug LIKE '%".$tag['id']."%'";
             $i++;
         }
+        $query.= " ORDER BY n.created DESC";
         $result = $this->db->query($query);
         if($result)
             return $result->result_array();
@@ -57,7 +56,8 @@ class tag extends MY_Model {
     }
     
     function getNodesByCategory($category){
-        $query = "SELECT node.*,user.username,user.id as user_id
+        $query = "SELECT node.title, node.id, node.description,node.original,
+            user.username,user.id as user_id
             FROM node 
             LEFT JOIN tag_node ON node.id=tag_node.id_node
             LEFT JOIN user ON node.user_id=user.id

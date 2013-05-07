@@ -37,6 +37,16 @@ class NodeController extends MY_Controller{
         $this->_load('node/newNode','Create a Foodprise!',$data);
     }
     
+    public function add1(){
+        $this->load->view('html/head');
+        $this->load->view('node/add1');
+    }
+    
+    public function add2(){
+        $this->load->view('html/head');
+        $this->load->view('node/add2');
+    }
+    
     public function checkNode(){
         if($this->input->post('tags')){
             $tags=$this->tagmanager->addTags($this->input->post('tags'));
@@ -66,6 +76,8 @@ class NodeController extends MY_Controller{
             $this->tagmanager->tagNode($id,$this->input->post('category'));
             if($this->input->post('tags'))
                 $this->tagmanager->tagNode($id,$tags);
+            $tags = $this->tagmanager->addTags($this->input->post('title'));
+            $this->tagmanager->tagNode($id,$tags);
             redirect('foodprise/'.$id,'refresh');
         }
     }
@@ -144,7 +156,23 @@ class NodeController extends MY_Controller{
     }
     
     public function search($tags){
+        $tags = str_replace('_',' ',$tags);
+        $tags = $this->tagmanager->addTags($tags);
         $nodes = $this->tagmanager->getNodes($tags,true);
+        $this->load->model('user');
+        $fnodes = array();
+        foreach($nodes as $node){
+            if($node['id']){
+            $user = $this->user->load($node['user_id']);
+            $user = $user['username'];
+            $node['username'] = $user;
+            $fnodes[]=$node;
+            }
+        }
+        $data = array(
+            'nodes'=>$fnodes,
+        );
+        $this->load->view('node/list',$data);
     }
     
     public function nodeByCategory($category){

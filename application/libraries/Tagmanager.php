@@ -82,6 +82,12 @@ class Tagmanager {
         return $CI->tag->getNodesByCategory($category);
     }
     
+    public function getNodes($tags){
+        $CI =& get_instance();
+        $CI->load->model('tag');
+        return $CI->tag->getNodes($tags);
+    }
+    
 }
 
 /* End of file Someclass.php */

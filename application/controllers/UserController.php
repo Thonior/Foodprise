@@ -24,7 +24,8 @@ class UserController extends MY_Controller {
                    'username'  => $user['username'],
                    'fullname'=>$user['name'].' '.$user['lastname'],
                    'email'     => $user['email'],
-                   'logged_in' => TRUE
+                   'logged_in' => TRUE,
+                   'role' => $user['role'],
                 );
                 $this->session->set_userdata($newdata);
                 redirect('home', 'refresh');
@@ -39,9 +40,9 @@ class UserController extends MY_Controller {
         redirect('home','refresh');
     }
     
-    public function register(){
-        $this->_load('user/register','Join Foodprise!');
-    }
+//    public function register(){
+//        $this->_load('user/register','Join Foodprise!');
+//    }
     
     public function checkRegister(){
         
@@ -68,7 +69,8 @@ class UserController extends MY_Controller {
                    'username'  => $this->input->post('username'),
                    'fullname'=>'',
                    'email'     => $this->input->post('email'),
-                   'logged_in' => TRUE
+                   'logged_in' => TRUE,
+                   'role' => 'ROLE_USER',
                 );
                 $this->session->set_userdata($newdata);
                 redirect('home', 'refresh');
@@ -79,11 +81,30 @@ class UserController extends MY_Controller {
     }
     
     public function profile($id=0){
-        
+        if(!$id){
+            $user = $this->getUser(true);
+        }
+        else{
+            $this->load->model('user');
+            $user = $this->user->load($id);
+        }
+        $data = array(
+            'user' => $user,
+        );
+        $this->_load('user/profile', $user['username'],$data);
     }
     
-    public function editProfile($id=0){
-        
+    public function editProfile(){
+        $this->getUser(true);
+        $data = array(
+            'user'=>$user,
+        );
+        $this->_load('user/edit_profile', 'Edit Profile', $data);
+    }
+    
+    public function invites(){
+        $user = $this->getUser(true);
+        $this->_load('admin/invites');
     }
     
     public function saveProfile(){
