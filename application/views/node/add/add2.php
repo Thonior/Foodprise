@@ -5,9 +5,9 @@
  * and open the template in the editor.
  */
 ?>
-
+<div id="step2" style="display:none;">
 <p class="title-add2">Detalles de artículo (Lo puedes cambiar más tarde)</p>
-<form class="add-form add2">
+<form class="add-form add2" method="<?=site_url()?>">
 	
 	<div class="imgpart">
 		<img src="<?=base_url()?>/public/img/add.jpg" alt="" />
@@ -33,4 +33,5 @@
 		<a class="return" href="">Volver Atrás</a>	
 	</div>
 	<div
-
+</form>
+</div>

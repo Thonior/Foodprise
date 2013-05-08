@@ -36,10 +36,16 @@ class Edgemanager {
         return $edge;
     }
     
-    public function removeEdge($edge){
+    public function removeEdge($edge,$user,$context){
         $CI =& get_instance();
         $CI->load->model('edge');
-        $CI->edge->delete($edge);
+        $edge = $CI->edge->loadBy(array(
+            'destination'=>$edge,
+            'origin'=>$user,
+            'context'=>$context,
+            )
+        );
+        $CI->edge->delete($edge['id']);
     }
     
     public function getUnread($destowner){
@@ -54,10 +60,17 @@ class Edgemanager {
         return $CI->edge->getLast($destowner);
     }
     
-    public function getEdgesByIdea($idea,$context){
+    public function getEdgesByNode($node,$context=0){
         $CI =& get_instance();
         $CI->load->model('edge');
-        $edges = $CI->edge->getByIdea($idea,$context);
+        $edges = $CI->edge->getByNode($node,$context);
+        return $edges;
+    }
+    
+    public function getEdgesByNodeUser($node,$user,$context=0){
+        $CI =& get_instance();
+        $CI->load->model('edge');
+        $edges = $CI->edge->getByNodeUser($node,$user,$context);
         return $edges;
     }
     

@@ -11,15 +11,21 @@
 	        <article>
 	            <img class="avatar" src="public/img/foodprise/avatar.jpg" alt="" />
 	            	<ul class="image-list">
-                        <li><img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
-	            			<a href="<?=  site_url('foodprise')?>/<?=$node['id']?>">
-	            				<ul>
-	            					<li class="x-layer"><span class="buttonadd" onclick="alert('hola');">Añadir Foodprise</span>
-	            					</li>
-	            				</ul>
-	            			</a>
-	            		</li>
-	           		</ul>
+                            <li><img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
+                                <a  href="#">
+                                    <ul>
+                                        <li class="x-layer">
+                                            <?php if($user):?>
+                                            <span <?php if($node['liked']):?>style="display:none;"<?php endif;?> class="buttonadd" id="like-<?=$node['id']?>" onclick="like(<?=$node['id']?>)">Add Foodprise</span>
+                                            <span <?php if(!$node['liked']):?>style="display:none;"<?php endif;?> class="buttonadd" id="unlike-<?=$node['id']?>" onclick="unlike(<?=$node['id']?>)">Remove Foodprise</span>
+                                            <?php // else:?>
+                                            
+                                            <?php endif;?>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </li>
+                        </ul>
 	            <p>
 	                <a href=""><?=$node['description']?></a>
 	            </p>
@@ -29,3 +35,35 @@
 	        </article>
 	<?php endforeach;?>
 </section>
+
+<script>
+    
+    function show(id){
+        window.location = "<?=site_url('foodprise')?>/"+id;
+    }
+    
+    function like(id){
+        var request = $.ajax({
+            type: "GET",
+            url: '<?=site_url('NodeController/likeNode')?>/'+id,
+        });
+
+        request.done(function (response, textStatus, jqXHR){
+            $('#like'+id).fadeOut(0);
+            $('#unlike'+id).fadeIn(0);
+        });
+    }
+    
+    function unlike(id){
+        var request = $.ajax({
+            type: "GET",
+            url: '<?=site_url('NodeController/unlikeNode')?>/'+id,
+        });
+
+        request.done(function (response, textStatus, jqXHR){
+            $('#like'+id).fadeOut(0);
+            $('#unlike'+id).fadeIn(0);
+        });
+    }
+</script>
+    

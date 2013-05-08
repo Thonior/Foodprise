@@ -12,9 +12,16 @@
 		            <li><a href="<?=site_url('home')?>">Home</a></li>
 		            <li id="root"><a href="#">Categories</a></li>
 		            <li><a href="<?=site_url('home')?>">Boxes</a></li>
+                            <?php if($user):?>
 		            <li class="add"><a href="#">Add</a></li>
-                            <!--<li><span class="add">Add</div></li>-->
+                            <?php else:?>
+                            <li><a href="<?=site_url('login')?>">Add</a></li>
+                            <?php endif;?>
+                            <?php if($user):?>
 		            <li><a href="<?=site_url('invite')?>">Invite</a></li>
+                            <?php else:?>
+                            <li><a href="<?=site_url('login')?>">Invite</a></li>
+                            <?php endif;?>
                             <?php if(!$user):?>
                             <li>
                                 <a class="double" href="<?=site_url('login')?>">Log in</a>

@@ -1,7 +1,16 @@
 <?php // echo "<pre>";print_r($node);die;?>
 <section class="fact">
 	<article>
-		<img src="<?=base_url()?>public/img/foodprise/<?php echo $node['original']?>"/>
+		<ul class="image-list">
+		    <li><img src="<?=base_url()?>public/img/foodprise/<?php echo $node['original']?>"/>
+				<a href="<?=  site_url('foodprise')?>/<?=$node['id']?>">
+					<ul>
+						<li class="x-layer"><span class="buttonadd" onclick="alert('hola');">Añadir Foodprise</span>
+						</li>
+					</ul>
+				</a>
+			</li>
+			</ul>
 	</article>
 </section>
 <aside class="fact">

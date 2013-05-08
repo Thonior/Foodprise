@@ -79,7 +79,7 @@ ul.image-list li {
 	cursor: pointer;
 }
 
-ul.image-list li.x-layer a {
+ul.image-list li.x-layer span {
 	position: absolute;
 	left: 42%;
 	top: 47%;

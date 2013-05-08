@@ -38,8 +38,17 @@ class NodeController extends MY_Controller{
     }
     
     public function add1(){
+        $categories = $this->tagmanager->getCategories();
+        $data = array(
+            'categories'=>$categories
+        );
         $this->load->view('html/head');
-        $this->load->view('node/add/add1');
+        $this->load->view('node/add/add1',$data);
+    }
+    
+    public function checkAdd1(){
+        $image = $this->uploadImg();
+        echo "<img src='public/img/foodprise/".$image['file_name']."'  class='preview'>";
     }
     
     public function add2(){
@@ -51,6 +60,7 @@ class NodeController extends MY_Controller{
         if($this->input->post('tags')){
             $tags=$this->tagmanager->addTags($this->input->post('tags'));
         }
+        
         $this->form_validation->set_rules('title', 'Title', 'trim|required|max_lenght[100]');
         $this->form_validation->set_rules('description', 'Description', 'trim|required|max_lenght[500]');
         $this->form_validation->set_rules('category', 'Category', 'required');
@@ -61,29 +71,30 @@ class NodeController extends MY_Controller{
         else
         {   
             $user = $this->GetUser();
-            $image = $this->uploadImg();
+//            $image = $this->uploadImg();
             $this->load->model('node');
             $newNode = array(
                 'title'=>$this->input->post('title'),
                 'description'=>nl2br($this->input->post('description')),
-                'original'=>$image['file_name'],
-                'thumb'=>'thumb_'.$image['file_name'],
+//                'original'=>$image['file_name'],
+//                'thumb'=>'thumb_'.$image['file_name'],
                 'user_id'=>$user['id'],
                 'created'=>time(),
-                'large'=>$image['file_name'],
+//                'large'=>$image['file_name'],
             );
             $id = $this->node->insert($newNode);
             $this->tagmanager->tagNode($id,$this->input->post('category'));
+            
             if($this->input->post('tags'))
                 $this->tagmanager->tagNode($id,$tags);
             $tags = $this->tagmanager->addTags($this->input->post('title'));
+//            echo "<pre>";print_r($tags);die;
             $this->tagmanager->tagNode($id,$tags);
             redirect('foodprise/'.$id,'refresh');
         }
     }
     
     private function uploadImg(){
-                $user = $this->getUser(true);
 		$config['upload_path'] = './public/img/foodprise';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1024000';
@@ -137,9 +148,14 @@ class NodeController extends MY_Controller{
         
     }
     
-    public function likeNoke($id){
+    public function likeNode($id){
         $user = $this->getUser();
         $this->edgemanager->addEdge($id,$user['id'],'like');
+    }
+    
+    public function unlikeNode($id){
+        $user = $this->getUser();
+        $this->edgemanager->removeEdge($id,$user['id'],'like');
     }
     
     public function commentNode($id){
@@ -186,6 +202,7 @@ class NodeController extends MY_Controller{
     }
     
     public function pullNodes($page=0,$category=0){
+        $user = $this->getUser();
         if($category){
             $nodes = $this->tagmanager->getNodesByCategory($category);
         }
@@ -193,12 +210,30 @@ class NodeController extends MY_Controller{
             $this->load->model('node');
             $nodes = $this->node->loadN($page);
         }
+        if($user){
+            $nodes = $this->prepareNodes($nodes);
+        }
         $data = array(
             'nodes'=>$nodes,
             'page'=>$page,
             'category'=>$category,
+            'user'=>$user,
         );
         $this->load->view('node/list',$data);
+    }
+    
+    public function prepareNodes($nodes){
+        $user = $this->getUser();
+        $fnodes = array();
+        
+        foreach($nodes as $node){
+            $node['liked']=false;
+            $edge = $this->edgemanager->getEdgesByNodeUser($node['id'],$user['id'],'like');
+            if($edge)
+                $node['liked']=true;
+            $fnodes[]=$node;
+        }
+        return $fnodes;
     }
     
 }

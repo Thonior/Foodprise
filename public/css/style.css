@@ -255,56 +255,60 @@ aside.fact p.cat-fact {
 FORMS
 */
 
-form.add-form {
+.add-form {
 	width: 640px;
 	background: #fff;
 	padding: 40px;
 	margin: 0 auto;
 }
 
-form.add-form label {
+.add-form label {
 	 font: 16px "Myriad Pro";
 	 line-height: 50px;
 }
 
-form.add-form input, form.add-form textarea, form.add-form select {
+.add-form input, form.add-form textarea, form.add-form select {
 	margin-bottom: 15px;
 }
 
-form.add-form input, form.add-form textarea {
+.add-form input, form.add-form textarea, div.foodprise {
 	max-width: 630px;
 	min-width: 630px;
 	padding: 5px;
 	border: 1px solid #ffcc33;
 }
 
-form.add-form input:focus, form.add-form select:focus, form.add-form input:active, form.add-form select:active, textarea:focus, textarea:active {
+.add-form input:focus, form.add-form select:focus, form.add-form input:active, form.add-form select:active, textarea:focus, textarea:active, div.foodprise:focus, div.foodprise:active {
 	outline: none;
 	box-shadow: 0 0 8px #ffcc33 !important;
 }
 
-form.add-form input[type="submit"], a.buttonadd {
+.add-form input[type="submit"], span.buttonadd, div.foodprise {
 	padding: 5px;
 	border: 1px solid #ffcc33;
-	min-width: auto;
 	background: #fff;
 	font-size: 14px;
 	text-transform: uppercase;
 	color: black;
 	min-width: auto !important;
 	max-width: auto !important;
+	cursor: pointer;
 }
 
-form.add-form input[type="submit"]:hover, a.buttonadd:hover {
+.add-form input[type="submit"]:hover, span.buttonadd:hover, div.foodprise:hover {
 	background: #ffcc33;
 	color: white;
 }
 
-form.add-form.config {
+div.foodprise {
+	display: inline;
+}
+
+.add-form.config {
 	display: inline-block;
 }
 
-form.add-form.config h2 {
+.add-form.config h2 {
 	margin: 0 0 0;
 }
 
@@ -312,7 +316,7 @@ form.add-form.config h2 {
 	margin: -33px 0 20px 120px;
 }
 
-form.add-form.config input, form.add-form.config textarea {
+.add-form.config input, form.add-form.config textarea {
 	max-width: 500px;
 	min-width: 500px;
 	padding: 5px;
@@ -320,7 +324,7 @@ form.add-form.config input, form.add-form.config textarea {
 	font-size: 14px;
 }
 
-form.add-form.config select {
+.add-form.config select {
 	font-size: 14px;
 	max-width: 510px;
 	min-width: 510px;
@@ -328,14 +332,14 @@ form.add-form.config select {
 	border: 1px solid #ffcc33;
 }
 
-form.add-form.add2 {
+.add-form.add2 {
 	width: 760px;
 	padding: 0 20px;
 	border: 1px solid #ffcc33;
 	border-bottom: 1px dashed #ffcc33;
 }
 
-form.add-form.add2 input, form.add-form.add2 textarea {
+.add-form.add2 input, form.add-form.add2 textarea {
 	max-width: 325px;
 	min-width: 325px;
 	padding: 5px;
@@ -343,7 +347,7 @@ form.add-form.add2 input, form.add-form.add2 textarea {
 	font-size: 14px;
 }
 
-form.add-form.add2 textarea {
+.add-form.add2 textarea {
 	float: left;
 	border-top: none;
 	margin: 1px 0 0 -21px;
@@ -353,11 +357,11 @@ form.add-form.add2 textarea {
 	max-height: 70px;
 }
 
-form.add-form.add2 textarea:focus, form.add-form.add2 textarea:active {
+.add-form.add2 textarea:focus, form.add-form.add2 textarea:active {
 	box-shadow: none !important;
 }
 
-form.add-form.add2 select {
+.add-form.add2 select {
 	max-width: 338px;
 	min-width: 338px;
 	font-size: 14px;

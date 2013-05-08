@@ -29,7 +29,7 @@ $(document).ready(function(){
     			$('#dialog-login').dialog('close');
     		}
     	});
-    	dlg.load('<?php echo site_url('NodeController/add2');?>', function(){
+    	dlg.load('<?php echo site_url('NodeController/add1');?>', function(){
             dlg.dialog('open');
         }); 
     });

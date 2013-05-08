@@ -50,7 +50,7 @@ class Tagmanager {
         $CI->load->model('tag');
         if(is_array($tags)){
             foreach($tags as $tag){
-                $CI->tag->tagNode($node,$tag);
+                $CI->tag->tagNode($node,$tag['id']);
             }
         }
         else{

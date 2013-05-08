@@ -39,6 +39,7 @@ class MY_Model extends CI_Model {
      * @return mixed returns and array with the results of false if there were no results
      */
     public function loadBy($params){
+        
         $query = 'SELECT * FROM '.$this->class.' WHERE ';
         $i=0;
         foreach($params as $field => $value){
