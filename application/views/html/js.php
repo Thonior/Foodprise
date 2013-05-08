@@ -21,15 +21,15 @@ $(document).ready(function(){
     		autoOpen:false,
     		resizable:false,
     		width:850,
-    		height:400,
+    		height:660,
     		modal:true,
                 dialogClass:'custom-dialog',
-    		title: "Add a Froodprise", 
+    		/*title: "Add a Froodprise", */
     		close:function(){ 
     			$('#dialog-login').dialog('close');
     		}
     	});
-    	dlg.load('<?php echo site_url('NodeController/add1');?>', function(){
+    	dlg.load('<?php echo site_url('NodeController/add2');?>', function(){
             dlg.dialog('open');
         }); 
     });
@@ -72,7 +72,16 @@ function search(){
         $('#node-list').html(response);
     });
 }
+</script>
 
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script type="text/javascript">
+  window.___gcfg = {lang: 'es'};
 
-
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
 </script>

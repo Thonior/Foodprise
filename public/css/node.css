@@ -25,19 +25,21 @@ article.intro {
 
 header.intro-info {
 	position: absolute;
-	width: 760px;
+	width: 722px;
 }
 
 header.intro-info .f-yellow {
 	margin: 0 auto;
 	margin-top: 7%;
+	margin-bottom: 20px;
 }
 
 header.intro-info p {
 	font-size: 14px;
 	color: #fff;
 	font-style: italic;
-	line-height: 10px;
+	line-height: 30px;
+	margin: 0px 10px;
 }
 
 header.intro-info p.title {
@@ -77,7 +79,7 @@ ul.image-list li {
 	cursor: pointer;
 }
 
-ul.image-list li a {
+ul.image-list li.x-layer a {
 	position: absolute;
 	left: 42%;
 	top: 47%;
@@ -104,4 +106,5 @@ article p {
 	color: #a0a0a0;
 	font-size: 16px;
 	line-height: 10px;
+	margin-left: 55px;
 }

@@ -22,7 +22,7 @@
                                <!--<a class="double" href="<?=site_url('register')?>">Register</a>-->
                             <?php else:?>
                             <li id="root2">
-                               <a href="<?=site_url('profile')?>">You</a>
+                               <a href="<?=site_url('profile')?>">You</a><span class="user"></span>
                             </li>
                             <?php endif;?>
 		            <li class="end">

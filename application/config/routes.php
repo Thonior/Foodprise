@@ -49,6 +49,7 @@ $route['logout']= "UserController/logout";
 $route['profile'] = 'UserController/profile';
 $route['profile/(:num)'] = 'UserController/profile/$2';
 $route['invite'] = 'UserController/invites';
+$route['configuration'] = 'UserController/editProfile';
 
 
 $route['newfood'] = "NodeController/newNode";

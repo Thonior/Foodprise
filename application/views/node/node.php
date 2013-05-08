@@ -1,7 +1,15 @@
 <?php // echo "<pre>";print_r($node);die;?>
-<div class="node-container">
+<section class="fact">
+	<article>
+		<img src="<?=base_url()?>public/img/foodprise/<?php echo $node['original']?>"/>
+	</article>
+</section>
+<aside class="fact">
     <h2><?=$node['title']?></h2>
-    <span><?=$category['tag']?></span>
-    <img src="<?=base_url()?>public/img/foodprise/<?php echo $node['original']?>"/>
-    <span><?=$node['description']?></span>
-</div>
+    <p class="cat-fact"><?=$category['tag']?></p>
+    <p><?=$node['description']?></p>
+    <div class="social">
+    	<div class="g-plusone" data-size="medium" data-annotation="none"></div>
+    	<a href="https://twitter.com/share" class="twitter-share-button" data-lang="es" data-count="none">Twittear</a>
+    	<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.foodprise.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=132341493503388" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:105px; height:21px;" allowTransparency="true"></iframe>
+</aside>

@@ -1,4 +1,4 @@
-
+<section>
 <!--	<article class="intro">
 		<header class="intro-info">
 			<div class="f-yellow"></div>
@@ -8,24 +8,24 @@
 		<img src="public/img/foodprise/intro.jpg" alt="Weelcome to Foodprise!" />
 	</article>-->
 	<?php foreach($nodes as $node):?>
-	        <article class="infinite-item">
-	       	    <h2>
-	                <a href="<?=site_url('foodprise')?>/<?=$node['id']?>"><?=$node['title']?></a>
-	            </h2>
+	        <article>
 	            <img class="avatar" src="public/img/foodprise/avatar.jpg" alt="" />
-	            
-	            <ul class="image-list">
-	            	<li><img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
-	            		<ul><li><a href="" class="button add">Añadir Foodprise</a></li></ul>
-	            	</li>
-	            </ul>
-	            	
+	            	<ul class="image-list">
+                        <li><img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
+	            			<a href="<?=  site_url('foodprise')?>/<?=$node['id']?>">
+	            				<ul>
+	            					<li class="x-layer"><span class="buttonadd" onclick="alert('hola');">Añadir Foodprise</span>
+	            					</li>
+	            				</ul>
+	            			</a>
+	            		</li>
+	           		</ul>
 	            <p>
-	                <?=$node['description']?>
+	                <a href=""><?=$node['description']?></a>
 	            </p>
 	            <p>
 	                <?=$node['username']?>
 	            </p>
 	        </article>
 	<?php endforeach;?>
-<a href="<?=site_url('NodeController/pullNodes')?>" class="infinite-more-link" style="visibility:hidden;">More</a>
+</section>

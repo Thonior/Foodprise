@@ -28,8 +28,13 @@ header {
 	position: relative;
 }
 
-h1{
+h1 {
     font-family:'Myriad Pro';
+}
+
+h2 a {
+	margin-left: 55px;
+	color: black;
 }
 
 #wrapper{
@@ -41,9 +46,19 @@ a{
     color: white;
 }
 
+article p a {
+	color: #a0a0a0;
+}
+
+article p a:hover {
+	color: black;
+}
+
 /*
 MENU
 */
+
+/* === Navegación Principal === */
 
 nav {
 	width: 1000px;
@@ -65,8 +80,8 @@ ul#menu li {
 	width: 110px;
 	border-right: 2px solid #fff;
 	border-left: 1px solid #000;
-	border-top: 4px solid #fff;
-	border-bottom: 4px solid #fff;
+	border-top: 3px solid #fff;
+	border-bottom: 3px solid #fff;
 	font-size: 14px;
 	font-family: 'Myriad Pro';
 	text-align: center;
@@ -94,9 +109,9 @@ ul#menu li:hover {
 }
 
 ul#menu li.end {
-	width: 241px;
-	border-right-width: 4px;
-	border-bottom-width: 4px;
+	width: 242px;
+	border-right-width: 3px;
+	border-bottom-width: 3px;
 	padding: 14px 0;
 		-webkit-border-top-right-radius: 10px;
 		-webkit-border-bottom-right-radius: 10px;
@@ -116,6 +131,12 @@ ul#menu li a.double {
 	padding: 18px 0;
 }
 
+ul#menu li#root2 {
+	position: relative;
+	text-align: left;
+	text-indent: 10px;
+}
+
 input.search {
 	background: url(../img/sprites.png) no-repeat 0px -200px;
 	width: 364px;
@@ -129,38 +150,105 @@ input.search:focus, input.search:active {
 	outline: none;
 }
 
-#dropdown{
-    width: 280px;
+#dropdown, #dropdown2{
+    max-width: 240px;
     height: auto;
     margin: 0 auto;
     display:none;
     background:-webkit-gradient(linear, left top, left bottom, from(#4e4d50), to(#b3b3b3));
     background:-moz-linear-gradient(center top , #4e4d50, #b3b3b3) repeat scroll 0 0 #b3b3b3;
-    padding: 40px 0px 0px 40px;
+    padding: 30px 0px 0px 30px;
     position:absolute;
-    left:85px;
+    left:105px;
     top:196px;
     z-index: 9999;
     text-align: left;
 }
 
-#dropdown ul{
+#dropdown2{left: 632px;padding-right: 30px;
+}
+
+#dropdown ul, #dropdown2 ul{
     list-style-type:none;
     margin:0;
     padding:0;
     font-size: 12px;
 }
 
-#dropdown .option{
-    width: 130px;
+#dropdown ul li {
+	 float: left;
+	 width: 110px;
+	 display: block;
+	 margin-right: 10px;
+}
+
+#dropdown .option, #dropdown2 .option{
     height: 55px;    
 	font-family: 'Myriad Pro';
     text-align: left;
-    float:left;
 }
 
-#dropdown .option a:hover {
+#dropdown .option a:hover, #dropdown2 .option a:hover {
 	color: #f19b18;
+}
+
+/* === Menú Configuración === */
+
+aside.menu-config {
+	float: left;
+	margin: 0 50px;
+	background: white;
+	padding: 20px 30px;
+	font-family: 'Myriad Pro';
+	color: black;
+	font-size: 14px;
+}
+
+aside.menu-config ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+aside.menu-config ul li {
+	margin: 5px 0;
+}
+
+aside.menu-config ul li a {
+	color: gray;
+}
+
+aside.menu-config ul li a:hover, aside.menu-config ul li a:active, aside.menu-config ul li a:focus {
+	color: black;
+}
+
+/*
+FACT
+*/
+
+section.fact {
+	display: inline-block;
+}
+
+aside.fact {
+	float: right;
+	width: 215px;
+	font-family: 'Myriad Pro';
+}
+
+aside.fact h2 {
+	font-size: 18px;
+	margin: 0;
+}
+
+aside.fact p {
+	font-size: 14px;
+	line-height: 12px;
+}
+
+aside.fact p.cat-fact {
+	margin: 2px 0;
+	font-weight: bold;
 }
 
 /*
@@ -195,6 +283,94 @@ form.add-form input:focus, form.add-form select:focus, form.add-form input:activ
 	box-shadow: 0 0 8px #ffcc33 !important;
 }
 
+form.add-form input[type="submit"], a.buttonadd {
+	padding: 5px;
+	border: 1px solid #ffcc33;
+	min-width: auto;
+	background: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: black;
+	min-width: auto !important;
+	max-width: auto !important;
+}
+
+form.add-form input[type="submit"]:hover, a.buttonadd:hover {
+	background: #ffcc33;
+	color: white;
+}
+
+form.add-form.config {
+	display: inline-block;
+}
+
+form.add-form.config h2 {
+	margin: 0 0 0;
+}
+
+.left-part {
+	margin: -33px 0 20px 120px;
+}
+
+form.add-form.config input, form.add-form.config textarea {
+	max-width: 500px;
+	min-width: 500px;
+	padding: 5px;
+	border: 1px solid #ffcc33;
+	font-size: 14px;
+}
+
+form.add-form.config select {
+	font-size: 14px;
+	max-width: 510px;
+	min-width: 510px;
+	height: 30px;
+	border: 1px solid #ffcc33;
+}
+
+form.add-form.add2 {
+	width: 760px;
+	padding: 0 20px;
+	border: 1px solid #ffcc33;
+	border-bottom: 1px dashed #ffcc33;
+}
+
+form.add-form.add2 input, form.add-form.add2 textarea {
+	max-width: 325px;
+	min-width: 325px;
+	padding: 5px;
+	border: 1px solid #ffcc33;
+	font-size: 14px;
+}
+
+form.add-form.add2 textarea {
+	float: left;
+	border-top: none;
+	margin: 1px 0 0 -21px;
+	max-width: 790px;
+	min-width: 790px;
+	height: 70px;
+	max-height: 70px;
+}
+
+form.add-form.add2 textarea:focus, form.add-form.add2 textarea:active {
+	box-shadow: none !important;
+}
+
+form.add-form.add2 select {
+	max-width: 338px;
+	min-width: 338px;
+	font-size: 14px;
+	height: 30px;
+	border: 1px solid #ffcc33;
+}
+
+.position {
+	position: absolute;
+	bottom: 30px;
+	left: 24px;
+}
+
 /* === Estilos de Validacion === */
  
 input:required:valid, textarea:required:valid {
@@ -207,6 +383,115 @@ input:focus:invalid, textarea:focus:invalid {
     border-color: #b03535
 }
 
+/*
+POP UPS
+*/
+
+/* === Add 1 === */
+
+.add1 {
+	border: 25px solid #e2a200;
+	width: 500px;
+	height: 500px;
+	margin: 0 auto;
+	text-align: center;
+	background: #fff;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
+}
+
+.add1 p.title {
+	font-size: 41px;
+	color: #e2a200;
+	line-height: 60px;
+	margin: 30px 100px;
+}
+
+.add1 ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.add1 ul li {
+	display: inline-block;
+}
+
+.add1 li a {
+	display: block;
+	float: left;
+	background-color: #fde8b3;
+	color: #e2a200;
+	font-size: 14px;
+	text-align: center;
+	margin-right: 30px;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
+}
+
+.add1 li a:focus, .add1 li a:active {
+	outline: none;
+	border: none;
+}
+
+.add1 li a.orange {
+	padding: 40px 20px;
+}
+
+.add1 li a.orange2 {
+	padding: 40px 29px;
+}
+
+.add1 li a.grey {
+	background: #d3d3d3;
+	padding: 40px 33px;
+	color: black;
+	margin-right: 0;
+}
+
+.add1 p {
+	font-size: 16px;
+	color: #e2a200;
+	margin: 0 105px;
+}
+
+/* === Add 2 === */
+.title-add2 {
+	font-size: 14px;
+	text-indent: 5px;
+}
+
+.imgpart {
+	float: left;
+	width: 400px;
+	height: 345px;
+	margin-right: 20px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.rightpart {
+	display: inline-block;
+}
+
+.photo-footer {
+	font-size: 12px;
+	display: block;
+	color: gray;
+	margin-top: 10px;
+}
+
+a.return {
+	font-size: 14px;
+	color: #c5c3c3 !important;
+	margin-left: 20px;
+}
+
+a.return:hover {
+	color: black !important;
+}
 
 /*
 FOOTER
@@ -320,9 +605,12 @@ a.twitter, a.pinterest, a.facebook {
 }
 
 .user{
-	background-position: 0 -100px ;
-	width: 56px;
-	height: 45px;
+	background-position: 0 -98px ;
+	width: 32px;
+	height: 25px;
+	position: absolute;
+	top: 13px;
+	right: 10px;
 }
 
 .arrowslider{
@@ -376,6 +664,14 @@ a.twitter, a.pinterest, a.facebook {
 	height: 30px;
 }
 
+.up-arrow {
+	background: url(../img/add1logo.jpg) no-repeat center top;
+	width: 57px;
+	height: 89px;
+	display: block;
+	margin: 30px auto 10px;
+}
+
 /*
 BUTTONS
 */
@@ -416,4 +712,3 @@ input::-moz-focus-inner /*Remove button padding in FF*/
     border: 0;
     padding: 0;
 }
-

@@ -1,4 +1,4 @@
-<?php echo form_open(site_url('UserController/checkLogin'),array('class'=>'tuclase'));?>
+<?php echo form_open(site_url('UserController/checkLogin'),array('class'=>'add-form'));?>
 <label for="username">Username
     <input type="text" name="username" value="<?=set_value('username')?>" placeholder="Username"/>
 </label>

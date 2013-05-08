@@ -95,11 +95,11 @@ class UserController extends MY_Controller {
     }
     
     public function editProfile(){
-        $this->getUser(true);
+        $user = $this->getUser(true);
         $data = array(
             'user'=>$user,
         );
-        $this->_load('user/edit_profile', 'Edit Profile', $data);
+        $this->_load('user/edit', 'Edit Profile', $data);
     }
     
     public function invites(){

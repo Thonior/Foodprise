@@ -6,11 +6,12 @@
  */
 ?>
 
-<p class="title">Detalles de artículo (Lo puedes cambiar más tarde)</p>
-<form id="add2">
-	<div class="leftpart">
-		<img src="" alt="" />
-		<span class="photo-footer">1024x768</span>
+<p class="title-add2">Detalles de artículo (Lo puedes cambiar más tarde)</p>
+<form class="add-form add2">
+	
+	<div class="imgpart">
+		<img src="<?=base_url()?>/public/img/add.jpg" alt="" />
+		<span class="photo-footer">1024x768</span><br />
 	</div>
 	<div class="rightpart">
 		<label for="title-in">Tìtulo</label><br/>
@@ -25,9 +26,11 @@
 		<select  name="list-in" placeholder="Añade a listas...">
 			<option>List 1</option>
 		</select>
-		
-	
 	</div>
 	<textarea placeholder="Di algo sobre esto"></textarea>
+	<div class="position">
+		<input type="submit" name="add" />
+		<a class="return" href="">Volver Atrás</a>	
+	</div>
 	<div
 

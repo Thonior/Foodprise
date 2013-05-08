@@ -39,12 +39,12 @@ class NodeController extends MY_Controller{
     
     public function add1(){
         $this->load->view('html/head');
-        $this->load->view('node/add1');
+        $this->load->view('node/add/add1');
     }
     
     public function add2(){
         $this->load->view('html/head');
-        $this->load->view('node/add2');
+        $this->load->view('node/add/add2');
     }
     
     public function checkNode(){

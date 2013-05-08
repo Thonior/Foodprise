@@ -8,12 +8,10 @@
 		<img src="public/img/foodprise/intro.jpg" alt="Weelcome to Foodprise!" />
 	</article>
 </section>
-<section>
-<div id="node-list" class="infinite-container">
+<div id="node-list">
     
     
 </div>
-</section>
 <div id="filter-info" data-page="<?=$page?>" data-category="<?=$category?>"/>
 
 <script>
