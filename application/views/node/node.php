@@ -3,12 +3,12 @@
 	<article>
 		<ul class="image-list">
 		    <li><img src="<?=base_url()?>public/img/foodprise/<?php echo $node['original']?>"/>
-				<a href="<?=  site_url('foodprise')?>/<?=$node['id']?>">
+				<span class="link" <?php /* href="<?=  site_url('foodprise')?>/<?=$node['id']?>"*/?>>
 					<ul>
-						<li class="x-layer"><span class="buttonadd" onclick="alert('hola');">Añadir Foodprise</span>
+						<li class="x-layer"><span class="buttonadd" onclick="alert('hola');"></span>
 						</li>
 					</ul>
-				</a>
+				</span>
 			</li>
 			</ul>
 	</article>

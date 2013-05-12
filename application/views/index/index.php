@@ -1,11 +1,6 @@
 <section>
 	<article class="intro">
-		<header class="intro-info">
-			<div class="f-yellow"></div>
-			<p class="title">Wellcome to Foodprise!</p>
-			<p>The way to share your gastronomic discoveries and amaze your friends</p>
-		</header>
-		<img src="public/img/foodprise/intro.jpg" alt="Weelcome to Foodprise!" />
+			<p>Invite and Foodprise! your friends</p>
 	</article>
 </section>
 <div id="node-list">

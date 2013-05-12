@@ -9,29 +9,29 @@
 	</article>-->
 	<?php foreach($nodes as $node):?>
 	        <article>
-	            <img class="avatar" src="public/img/foodprise/avatar.jpg" alt="" />
+	            
 	            	<ul class="image-list">
                             <li><img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
-                                <a  href="#">
+                                <span class="link" href="#">
                                     <ul>
                                         <li class="x-layer">
                                             <?php if($user):?>
-                                            <span <?php if($node['liked']):?>style="display:none;"<?php endif;?> class="buttonadd" id="like-<?=$node['id']?>" onclick="like(<?=$node['id']?>)">Add Foodprise</span>
-                                            <span <?php if(!$node['liked']):?>style="display:none;"<?php endif;?> class="buttonadd" id="unlike-<?=$node['id']?>" onclick="unlike(<?=$node['id']?>)">Remove Foodprise</span>
+                                            <span <?php if($node['liked']):?>style="display:none;"<?php endif;?> class="buttonadd" id="like-<?=$node['id']?>" onclick="like(<?=$node['id']?>)"></span>
+                                            <span <?php if(!$node['liked']):?>style="display:none;"<?php endif;?> class="buttonadd" id="unlike-<?=$node['id']?>" onclick="unlike(<?=$node['id']?>)"></span>
                                             <?php // else:?>
                                             
                                             <?php endif;?>
                                         </li>
                                     </ul>
-                                </a>
+                                </span>
                             </li>
                         </ul>
-	            <p>
-	                <a href=""><?=$node['description']?></a>
-	            </p>
-	            <p>
+                <img class="avatar" src="public/img/foodprise/avatar.jpg" alt="" />
+	            <p class="author-node">
+	                <a href=""><?=$node['description']?></a><br />
 	                <?=$node['username']?>
 	            </p>
+	            
 	        </article>
 	<?php endforeach;?>
 </section>
@@ -49,8 +49,8 @@
         });
 
         request.done(function (response, textStatus, jqXHR){
-            $('#like'+id).fadeOut(0);
-            $('#unlike'+id).fadeIn(0);
+            $('#like-'+id).fadeOut(0);
+            $('#unlike-'+id).fadeIn(0);
         });
     }
     
@@ -61,8 +61,8 @@
         });
 
         request.done(function (response, textStatus, jqXHR){
-            $('#like'+id).fadeOut(0);
-            $('#unlike'+id).fadeIn(0);
+            $('#like-'+id).fadeOut(0);
+            $('#unlike-'+id).fadeIn(0);
         });
     }
 </script>
