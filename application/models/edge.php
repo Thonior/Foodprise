@@ -58,6 +58,23 @@ class edge extends MY_Model{
         }
     }
     
+    function getByOrigin($origin){
+        $query = "SELECT edge.id as edge_id, user.id as user_id,user.username, user.name,
+            user.lastname ,node.id,node.title,node.created,
+            node.original,node.description
+            FROM edge
+            LEFT JOIN user ON edge.origin=user.id
+            LEFT JOIN node ON edge.destination=node.id
+            WHERE edge.origin=$origin
+            ORDER BY date DESC
+            LIMIT 0,6";
+            $result = $this->db->query($query);
+            if($result)
+                return $result->result_array();
+            else
+                return false;
+    }
+    
 }
 
 ?>

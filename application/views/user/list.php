@@ -11,11 +11,10 @@
 	        <article>
 	            
 	            	<ul class="image-list">
-                            <li onclick="show(<?=$node['id']?>);">
-                                <img  src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>" />
-                                <span class="link" href="#" >
+                            <li><img src="<?=base_url()?>public/img/foodprise/<?=$node['original']?>"/>
+                                <span class="link" href="#">
                                     <ul>
-                                        <li class="x-layer" >
+                                        <li class="x-layer">
                                             <?php if($user):?>
                                             <span <?php if($node['liked']):?>style="display:none;"<?php endif;?> class="buttonadd" id="like-<?=$node['id']?>" onclick="like(<?=$node['id']?>)"></span>
                                             <span <?php if(!$node['liked']):?>style="display:none;"<?php endif;?> class="buttonadd" id="unlike-<?=$node['id']?>" onclick="unlike(<?=$node['id']?>)"></span>
@@ -39,12 +38,8 @@
 
 <script>
     
-    var foodprise = 0;
-    
     function show(id){
-        if(foodprise==0){
-            window.location = "<?=site_url('foodprise')?>/"+id;
-        }
+        window.location = "<?=site_url('foodprise')?>/"+id;
     }
     
     function like(id){
@@ -66,17 +61,9 @@
         });
 
         request.done(function (response, textStatus, jqXHR){
-            $('#unlike-'+id).fadeOut(0);
-            $('#like-'+id).fadeIn(0);
+            $('#like-'+id).fadeOut(0);
+            $('#unlike-'+id).fadeIn(0);
         });
     }
-    
-    $('.x-layer').mouseenter(function(){
-        foodprise = 1;
-    });
-    
-    $('.x-layer').mouseleave(function(){
-        foodprise = 0;
-    });
 </script>
     

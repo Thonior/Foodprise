@@ -46,6 +46,7 @@ class AdminController extends MY_Controller{
         $user = $this->getUser();
         $from = 'admin@foodprise.com';
         $name = 'Foodprise';
+        $this->load->model('user');
         if($user['role']!='ROLE_ADMIN'){
             $from = $user['email'];
             $name = $user['username'];
@@ -56,6 +57,13 @@ class AdminController extends MY_Controller{
         $this->email->to('jpo1987@gmail.com');  
         foreach($emails as $email){
             $this->email->bcc($email); 
+            $newUser = array();
+            $newUser['created'] = time();
+            $newUser['email'] = $email;
+            $newUser['password'] = 'temp';
+            $newUser['username'] = 'temp';
+            $hewUser['invitecode'] = $this->generateRandomString(); 
+            $this->user->insert($newUser);
         }
         $this->email->subject('You have been invited to Foodprise!');
         $this->email->message('Testing the email class.');	
@@ -65,5 +73,14 @@ class AdminController extends MY_Controller{
     }
     
 }
+
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
+    }
 
 ?>

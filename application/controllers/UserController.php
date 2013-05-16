@@ -22,6 +22,8 @@ class UserController extends MY_Controller {
                 $newdata = array(
                    'id' => $user['id'],
                    'username'  => $user['username'],
+                   'name'=> $user['name'],
+                   'lastname'=> $user['lastname'],
                    'fullname'=>$user['name'].' '.$user['lastname'],
                    'email'     => $user['email'],
                    'logged_in' => TRUE,
@@ -88,14 +90,19 @@ class UserController extends MY_Controller {
             $this->load->model('user');
             $user = $this->user->load($id);
         }
+        
         $data = array(
             'user' => $user,
+            'page'=>0,
         );
         $this->_load('user/profile', $user['username'],$data);
     }
     
     public function editProfile(){
         $user = $this->getUser(true);
+        $this->load->model('user');
+        $user = $this->user->load($user['id']);
+//        echo "<pre>";print_r($user);die;
         $data = array(
             'user'=>$user,
         );
@@ -108,6 +115,88 @@ class UserController extends MY_Controller {
     }
     
     public function saveProfile(){
+        $this->form_validation->set_rules('name', 'Name', 'trim|max_lenght[100]');
+        $this->form_validation->set_rules('lastname', 'Lastname', 'trim|max_lenght[100]');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|max_lenght[100]');
+        $this->form_validation->set_rules('bio', 'Bio', 'trim|max_lenght[1000]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        if ($this->form_validation->run() == FALSE)
+        {
+            $user = $this->user->load($this->input->post('id'));
+            $data = array(
+                'user'=>$user,
+            );
+            $this->_load('user/edit', 'Edit Profile', $data);
+        }
+        else
+        {
+            $data = array(
+                'username' => $this->input->post('username'),
+                'email' => $this->input->post('email')
+            );
+            if($this->input->post('name'))
+                $data['name'] = $this->input->post('name');
+            if($this->input->post('lastname'))
+                $data['lastname'] = $this->input->post('name');
+            if($this->input->post('password'))
+                $data['password'] = $this->input->post('name');
+            if($this->input->post('bio'))
+                $data['bio'] = $this->input->post('bio');
+            if($this->input->post('location'))
+                $data['location'] = $this->input->post('location');
+            if($this->input->post('twitter'))
+                $data['twitter'] = $this->input->post('twitter');
+            if($this->input->post('age')!='none')
+                $data['age'] = $this->input->post('age');
+            if($this->input->post('gender')!='none')
+                $data['gender'] = $this->input->post('gender');
+            
+            $this->load->model('user');
+            $this->user->update($this->input->post('id'),$data);
+        }
+        $user = $this->user->load($this->input->post('id'));
+        $data = array(
+            'user'=>$user,
+        );
+        $this->_load('user/edit', 'Edit Profile', $data);
+    }
+    
+    public function editPassword(){
+        $user = $this->getUser(true);
+        $this->load->model('user');
+        $user = $this->user->load($user['id']);
+        $data = array(
+            'user'=>$user
+        );
+        $this->_load('user/editPassword','Edit Password',$data);
+    }
+    
+    public function savePassword(){
+        $this->load->model('user');
+        $this->form_validation->set_rules('password', 'Password', 'trim|max_lenght[16]|min_lenght[5]|md5');
+        if ($this->form_validation->run() == FALSE)
+        {
+            $user = $this->user->load($this->input->post('id'));
+            $data = array(
+                'user'=>$user,
+            );
+            $this->_load('user/edit', 'Edit Profile', $data);
+        }
+        else
+        {
+            $data = array(
+                'password'=>$this->input->post('password'),
+                );
+            $this->user->update($this->input->post('id'),$data);
+            $user = $this->user->load($this->input->post('id'));
+            $data = array(
+                'user'=>$user,
+            );
+            $this->_load('user/edit', 'Edit Profile', $data);
+        }
+    }
+    
+    public function acceptInvite($code){
         
     }
 }

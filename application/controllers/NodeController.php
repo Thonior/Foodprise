@@ -15,15 +15,22 @@ class NodeController extends MY_Controller{
     //put your code here
     public function node($id){
         $this->load->model('node');
+        $liked = false;
         $node = $this->node->load($id);
         $user = $this->getUser();
         $tags = $this->tagmanager->getTags($node['id']);
         $category = $this->tagmanager->getCategory($node['id']);
+        if($user){
+            $edge = $this->edgemanager->getEdgesByNodeUser($id,$user['id'],'like');
+            if($edge)
+                $liked=true;
+        }
         $data = array(
             'node'=>$node,
             'user'=>$user,
             'tags'=>$tags,
             'category'=>$category,
+            'liked' => $liked,
         );
         $this->_load('node/node',$node['title'],$data);
     }
@@ -199,6 +206,20 @@ class NodeController extends MY_Controller{
             'category'=>$category['id'],
         );
         $this->_load('node/nodes',$category['tag'],$data);
+    }
+    
+    public function pullProfileNodes($user,$page=0){
+        $id= $user;
+        $user = $this->getUser();
+        $nodes = $this->edgemanager->getByOrigin($id);
+        if($user){
+            $nodes = $this->prepareNodes($nodes);
+        }
+        $data = array(
+            'user'=>$user,
+            'nodes'=>$nodes,
+        );
+        $this->load->view('node/list',$data);
     }
     
     public function pullNodes($page=0,$category=0){

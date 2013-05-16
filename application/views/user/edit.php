@@ -1,9 +1,9 @@
 <aside class="menu-config">
-	<ul><li class="title">CUENTA</li>
-		<li><a href="">Perfil</a></li>
-		<li><a href="">Preferencias</a></li>
-		<li><a href="">Contraseña</a></li>
-		<li><a href="">Notificaciones</a></li>
+	<ul><li class="title">Account</li>
+		<li><a href="<?=site_url('configuration')?>">Profile</a></li>
+		<li><a href="<?=site_url('password')?>">Preferences</a></li>
+		<li><a href="<?=site_url('password')?>">Password</a></li>
+		<li><a href="">Notifications</a></li>
 	</ul>
 </aside>
 
@@ -13,29 +13,71 @@
 
 <div class="left-part">
 	<label for="name">Name</label><br />
-	    <input type="text" name="name" value="<?=set_value('name')?>" placeholder="Name"/><br />
+	    <input type="text" name="name" value="<?php
+                if(!set_value('name')){
+                    echo $user['name'];
+                }
+                else{
+                    echo set_value('name');
+                }
+            ?>" placeholder="Name"/><br />
 	
 	<?=form_error('name')?>
 	
 	<label for="lastname">Lastname</label><br />
-	    <input type="text" name="lastname" value="<?=set_value('lastname')?>" placeholder="Lastname"/><br />
+	    <input type="text" name="lastname" value="<?php
+                if(!set_value('lastname')){
+                    echo $user['lastname'];
+                }
+                else{
+                    echo set_value('lastname');
+                }
+            ?>" placeholder="Lastname"/><br />
 	
 	<?=form_error('lastname')?>
 	
 	<label for="username">Username</label><br />
-	    <input type="text" name="username" value="<?=set_value('username')?>" placeholder="Username"/><br />
+	    <input type="text" name="username" value="<?php
+                if(!set_value('username')){
+                    echo $user['username'];
+                }
+                else{
+                    echo set_value('username');
+                }
+            ?>" placeholder="Username"/><br />
 	<?=form_error('username')?>
 	
 	<label for="location">Location</label><br />
-	    <input type="text" name="location" value="<?=set_value('location')?>" placeholder="e.g. New York, NY"/><br />
+	    <input type="text" name="location" value="<?php
+                if(!set_value('location')){
+                    echo $user['location'];
+                }
+                else{
+                    echo set_value('location');
+                }
+            ?>" placeholder="e.g. New York, NY"/><br />
 	<?=form_error('location')?>
 	
 	<label for="twitter">Twitter</label><br />
-	    <input type="text" name="twitter" value="<?=set_value('twitter')?>"/><br />
+	    <input type="text" name="twitter" value="<?php
+                if(!set_value('twitter')){
+                    echo $user['twitter'];
+                }
+                else{
+                    echo set_value('twitter');
+                }
+            ?>"/><br />
 	<?=form_error('twitter')?>
 	
 	<label for="bio">Bio</label><br/>
-	<textarea name="bio"></textarea><br/>
+	<textarea name="bio"><?php
+                if(!set_value('bio')){
+                    echo $user['bio'];
+                }
+                else{
+                    echo set_value('bio');
+                }
+            ?></textarea><br/>
 	
 	<?=form_error('bio')?>
 </div>
@@ -44,7 +86,14 @@
 
 <div class="left-part">
 	<label for="email">Email</label><br/>
-	    <input type="text" name="email" /><br/>
+	    <input type="text" name="email" value="<?php
+                if(!set_value('email')){
+                    echo $user['email'];
+                }
+                else{
+                    echo set_value('email');
+                }
+            ?>"/><br/>
 	<?=form_error('email')?>
 	
 	<label for="age">Age</label><br/>
@@ -61,7 +110,7 @@
 	<label for="gender">Gender</label><br/>
 	    <select name="gender">
 	            <option value="none">Not specified</option>
-	            <option value="m" <?php if($user['gander']=='m'):?>selected<?php endif;?>>Male</option>
+	            <option value="m" <?php if($user['gender']=='m'):?>selected<?php endif;?>>Male</option>
 	            <option value="f" <?php if($user['gender']=='f'):?>selected<?php endif;?>>Female</option>
 	    </select><br/>
 </div>
@@ -74,4 +123,6 @@
 	
 	<input type="submit" value="Save"/>
 </div>
+
+<input type="hidden" name="id" value="<?=$user['id']?>"/>
 <?php echo form_close();?>
