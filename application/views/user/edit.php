@@ -1,13 +1,13 @@
 <aside class="menu-config">
 	<ul><li class="title">Account</li>
 		<li><a href="<?=site_url('configuration')?>">Profile</a></li>
-		<li><a href="<?=site_url('password')?>">Preferences</a></li>
+		<!--<li><a href="<?=site_url('password')?>">Preferences</a></li>-->
 		<li><a href="<?=site_url('password')?>">Password</a></li>
 		<li><a href="">Notifications</a></li>
 	</ul>
 </aside>
 
-<?php echo form_open(site_url('UserController/saveProfile'),array('class'=>'add-form config'));?>
+<?php echo form_open_multipart(site_url('UserController/saveProfile'),array('class'=>'add-form config'));?>
 
 <h2>Perfil</h2>
 
@@ -118,6 +118,7 @@
 <h2>Picture</h2>
 
 <div class="left-part">
+    <div style="float:left;"><img class="avatar" src="public/img/user/<?=$user['picture']?>" alt="" /></div>
 	<label for="img">Profile picture</label><br/>
 	<input type="file" name="image" /><br/>
 	

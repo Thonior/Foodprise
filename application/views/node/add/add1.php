@@ -30,7 +30,7 @@
 </div>
 
 <div id="upload" style="display:none;">
-    <?php echo form_open(site_url('NodeController/checkAdd1'),array('class'=>'add-form','id'=>'imageform'));?>
+    <?php echo form_open_multipart(site_url('NodeController/checkAdd1'),array('class'=>'add-form','id'=>'imageform'));?>
         <label for="img">Select an image from your computer to upload it</label><br/>
         <input type="file" name="photoimage" id="photoimage"/><br/>
         <input type="hidden" name="mode" value="upload"/>
@@ -44,8 +44,8 @@
 <p class="title-add2">Detalles de artículo (Lo puedes cambiar más tarde)</p>
 <form class="add-form add2" method="POST" action="<?=site_url('NodeController/checkNode')?>">
 	<div class="imgpart">
-            <!--<div id="preview"></div>-->
-            <img src="<?=base_url()?>/public/img/add.jpg" alt="" />
+            <div id="preview"></div>
+            <!--<img src="<?=base_url()?>/public/img/add.jpg" alt="" />-->
             <span class="photo-footer">1024x768</span><br />
 	</div>
 	<div class="rightpart">

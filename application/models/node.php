@@ -13,7 +13,7 @@ include_once('MY_Model.php');
 class node extends MY_Model{
     //put your code here
     function loadN($page=0){
-        $query = "SELECT node.*,user.username,user.id as user_id
+        $query = "SELECT node.*,user.username,user.id as user_id,user.picture
             FROM node
             LEFT JOIN user ON node.user_id=user.id
             ORDER BY node.created DESC LIMIT ".(7*$page).",7";

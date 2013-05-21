@@ -27,7 +27,7 @@
                                 </span>
                             </li>
                         </ul>
-                <img class="avatar" src="public/img/foodprise/avatar.jpg" alt="" />
+                <img class="avatar" src="public/img/user/<?=$node['picture']?>" alt="" />
 	            <p class="author-node">
 	                <a href=""><?=$node['description']?></a><br />
 	                <?=$node['username']?>

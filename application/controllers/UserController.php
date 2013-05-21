@@ -130,6 +130,7 @@ class UserController extends MY_Controller {
         }
         else
         {
+            $picture = $this->uploadProfPic();
             $data = array(
                 'username' => $this->input->post('username'),
                 'email' => $this->input->post('email')
@@ -150,7 +151,7 @@ class UserController extends MY_Controller {
                 $data['age'] = $this->input->post('age');
             if($this->input->post('gender')!='none')
                 $data['gender'] = $this->input->post('gender');
-            
+            $data['picture'] = $picture['upload_data']['file_name'];
             $this->load->model('user');
             $this->user->update($this->input->post('id'),$data);
         }
@@ -159,6 +160,28 @@ class UserController extends MY_Controller {
             'user'=>$user,
         );
         $this->_load('user/edit', 'Edit Profile', $data);
+    }
+    
+    private function uploadProfPic(){
+        $config['upload_path'] = './public/img/user';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size']	= '100';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('image'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+                var_dump($error);die;
+        }
+        else
+        {
+                $data = array('upload_data' => $this->upload->data());
+//                var_dump($data);
+                return $data;
+        }
     }
     
     public function editPassword(){

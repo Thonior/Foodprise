@@ -115,3 +115,12 @@ article p {
 article p.author-node {
 	line-height: 18px;
 }
+
+.avatar {
+	width: 45px;
+	height: 45px;
+	padding: 0;
+	margin-left: 10px;
+	border: none;
+	float: right;
+}
